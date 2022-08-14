@@ -1,3 +1,9 @@
+/*
+    Redes de Computadores I
+    Atividade 3 - Cálculo de endereço IPv4
+    Aluno: Daniel Henrique Serezane Pereira
+*/
+
 #include <stdio.h>
 #include <stdint.h>
 
