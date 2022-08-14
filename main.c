@@ -4,7 +4,7 @@
 int main(void) {
     // Pegando um endereço IP válido
     // números inadequados, mas não inválidos (por exemplo, maiores que 255) resultarão em overflow
-    uint32_t ip = 0; // representando o IP em um número de 32, para maior eficiência
+    uint32_t ip = 0; // representando o IP em um número inteiro > 0 de 32 bits, para maior eficiência
     unsigned char* ip_oct = (unsigned char*) & ip; // separando os octetos
     printf("Insira um endereço: ");
 
@@ -28,7 +28,15 @@ int main(void) {
     uint32_t mask = 0xFFFFFFFFUL << (32 - mask_p);
     unsigned char* mask_oct = (unsigned char*) & mask;
 
-    printf("%hhu.%hhu.%hhu.%hhu", mask_oct[3], mask_oct[2], mask_oct[1], mask_oct[0]);
+    // Endereço de rede: AND lógico entre ip e mask
+    // lembrando que é necessário gerar esse uint32, pois os octetos são meramente ponteiros
+    // o gasto de memória é um só (32 bits por valor)
+    uint32_t rede = (ip & mask);
+    unsigned char* net_oct = (unsigned char*) & rede;
+
+    // Endereço de broadcast: OR lógico com a máscara inversa
+    uint32_t broad = (ip | (~mask)); 
+    unsigned char* broad_oct = (unsigned char*) & broad;
 
     return 0;
 }
