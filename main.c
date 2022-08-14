@@ -30,8 +30,7 @@ int main(void) {
         printf("Endereço inválido.\n");
         return 1;
     }
-
-    // T0DO: perguntar se precisa de 0 (tem problema pq estoura uint32_t)
+    
     // Pegando uma notação de máscara (número de 1-32) válida.
     // uchar é o menor número possível de alocar (1 byte) pela linguagem C
     unsigned char mask_p;
