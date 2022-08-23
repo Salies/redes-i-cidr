@@ -14,10 +14,7 @@ unsigned long long p(unsigned char n);
 // Retorna 2 elevado a n
 unsigned long long p(unsigned char n) {
     if(n == 0) return 1; // não deve acontecer, mas...
-    unsigned long long out = 2;
-    for(unsigned char i = 1; i < n; i++)
-        out *= 2;
-    return out;
+    return (unsigned long long)(2) << (n - 1);
 }
 
 int main(void) {
