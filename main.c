@@ -14,7 +14,10 @@ unsigned long long p(unsigned char n);
 // Retorna 2 elevado a n
 unsigned long long p(unsigned char n) {
     if(n == 0) return 1; // não deve acontecer, mas...
-    return 2 << (n - 1);
+    unsigned long long out = 2;
+    for(unsigned char i = 1; i < n; i++)
+        out *= 2;
+    return out;
 }
 
 int main(void) {
@@ -70,8 +73,10 @@ int main(void) {
     printf("\nNúmero de endereços: %llu", h);
     if (h >= 2)
         printf("\nNuméro de endereços válidos: %llu", h - 2);
+    else
+        printf("\nNuméro de endereços válidos: %d", 0);
     if(h <= 2)
-        printf("\nNão há range endereços usáveis.\n");
+        printf("\nRange usável de endereços: nenhum\n");
     else
         printf("\nRange usável de endereços: %hhu.%hhu.%hhu.%hhu - %hhu.%hhu.%hhu.%hhu\n", 
     net_oct[3], net_oct[2], net_oct[1], (net_oct[0] + 1), 
